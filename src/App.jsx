@@ -25,6 +25,10 @@ function App() {
     setContactList(sortedContacts);
   }
 
+  const deleteActor = (id) => {
+    const updatedList = contactList.filter((actor) => actor.id !== id);
+    setContactList(updatedList);
+  };
   return (
     <div>
       <h1>ACTORS</h1>
@@ -53,6 +57,9 @@ function App() {
             <tr key={contact.id}>
               <td>
                 <img src={contact.pictureUrl} alt={contact.name} />
+              </td>
+              <td>
+                <button onClick={() => deleteActor(contact.id)}>Delete</button>
               </td>
               <td>{contact.name}</td>
               <td>{contact.popularity}</td>
